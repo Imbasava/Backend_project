@@ -27,16 +27,13 @@ ALTER TABLE posts
 ADD COLUMN scheduled_at TIMESTAMP;
 
 
-ALTER TABLE posts
-ADD COLUMN scheduled_at TIMESTAMP;
-
-
 CREATE TABLE IF NOT EXISTS posts (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     content TEXT NOT NULL,
     media_url TEXT,
     comments_enabled BOOLEAN DEFAULT TRUE,
+ scheduled_at TIMESTAMP,
     is_deleted BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
